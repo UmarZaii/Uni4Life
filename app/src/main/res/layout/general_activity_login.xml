@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.umarzaii.uni4life.Activity.General.LoginActivity">
+
+    <include
+        layout="@layout/general_toolbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="225dp"
+            android:background="@color/colorPrimary">
+
+            <ImageView
+                android:layout_marginTop="20dp"
+                android:src="@drawable/schedule"
+                android:layout_gravity="center"
+                android:layout_width="125dp"
+                android:layout_height="125dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="CLASS REMINDER"
+                android:textColor="#fff"
+                android:textSize="25sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="JTMK"
+                android:textColor="#fff"
+                android:textSize="25sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <EditText
+                android:id="@+id/edtUserEmailLogin"
+                android:drawableStart="@drawable/ic_person_black_24dp"
+                android:drawableLeft="@drawable/ic_person_black_24dp"
+                android:textColor="#fff"
+                android:textColorHint="#fff"
+                android:background="@color/colorPrimary"
+                android:layout_marginTop="80dp"
+                android:layout_gravity="center"
+                android:hint="Email"
+                android:padding="10dp"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:id="@+id/edtUserPassLogin"
+                android:drawableStart="@drawable/ic_https_black_24dp"
+                android:drawableLeft="@drawable/ic_https_black_24dp"
+                android:textColor="#fff"
+                android:textColorHint="#fff"
+                android:background="@color/colorPrimary"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btnLogin"
+                android:textColor="#fff"
+                android:background="@color/colorPrimary"
+                android:text="LOGIN"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnGoToSignUp"
+                android:textColor="#fff"
+                android:background="@color/colorPrimary"
+                android:text="SIGN UP"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/general_toolbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <EditText
+        android:id="@+id/edtUserEmailReg"
+        android:ems="15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="E-mail"
+        android:layout_marginTop="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/edtUserNameReg"
+        android:layout_alignStart="@+id/edtUserNameReg" />
+
+    <EditText
+        android:id="@+id/edtUserPassReg"
+        android:ems="15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:layout_below="@+id/edtUserEmailReg"
+        android:layout_alignLeft="@+id/edtUserEmailReg"
+        android:layout_alignStart="@+id/edtUserEmailReg" />
+
+    <EditText
+        android:id="@+id/edtUserNameReg"
+        android:ems="15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Full Name"
+        android:layout_below="@+id/edtUserPassReg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp" />
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SIGN UP"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="87dp" />
+
+</RelativeLayout>
