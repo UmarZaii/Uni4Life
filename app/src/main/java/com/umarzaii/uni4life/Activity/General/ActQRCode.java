@@ -20,7 +20,7 @@ import com.umarzaii.uni4life.Database.TblLecturer;
 import com.umarzaii.uni4life.Database.TblUser;
 import com.umarzaii.uni4life.R;
 
-public class QRCodeActivity extends AppCompatActivity {
+public class ActQRCode extends AppCompatActivity {
 
     private FirebaseController controller;
 
@@ -33,7 +33,7 @@ public class QRCodeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.general_activity_qrcode);
+        setContentView(R.layout.gen_act_qrcode);
 
         controller = new FirebaseController();
 
@@ -67,8 +67,10 @@ public class QRCodeActivity extends AppCompatActivity {
         tblUser.getUserRole(controller.getUserID()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String lecturerID = dataSnapshot.child(DBConstants.lecturerID).getValue().toString();
-                getLecturerStatus(lecturerID);
+                if (dataSnapshot.hasChild(DBConstants.lecturerID)) {
+                    String lecturerID = dataSnapshot.child(DBConstants.lecturerID).getValue().toString();
+                    getLecturerStatus(lecturerID);
+                }
             }
 
             @Override

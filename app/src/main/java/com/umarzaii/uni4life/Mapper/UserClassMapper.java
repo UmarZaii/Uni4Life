@@ -20,6 +20,8 @@ public class UserClassMapper {
     @Exclude
     public Map<String, Object> detailsToMap() {
         HashMap<String, Object> result = new HashMap<>();
+        result.put(DBConstants.userClassID, model.getFacultyID());
+        result.put(DBConstants.userClassName, model.getFacultyID());
         result.put(DBConstants.facultyID, model.getFacultyID());
         result.put(DBConstants.deptID, model.getDeptID());
         result.put(DBConstants.courseID, model.getCourseID());

@@ -16,9 +16,11 @@ public class TimeTableMapper {
     TimeTableModel model;
     DropdownController controller;
 
-    public TimeTableMapper(TimeTableModel model, DropdownController controller) {
+    public TimeTableMapper() {
+    }
+
+    public TimeTableMapper(TimeTableModel model) {
         this.model = model;
-        this.controller = controller;
     }
 
     @Exclude

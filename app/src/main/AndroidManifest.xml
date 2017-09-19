@@ -8,6 +8,27 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"></application>
+        android:theme="@style/AppTheme">
+
+        <activity android:name=".Activity.General.ActLaunch">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".Activity.General.ActCredentialsAdd" />
+        <activity android:name=".Activity.General.ActSignUp" />
+        <activity android:name=".Activity.General.ActActivation" />
+        <activity android:name=".Activity.General.ActCredentialsCheck" />
+        <activity android:name=".Activity.General.ActLogin" />
+        <activity android:name=".Activity.General.ActQRCode" />
+        <activity android:name=".Activity.DeptAdmin.DptAdmActMain" />
+        <activity android:name=".Activity.DeptHead.DptHeadActMain" />
+        <activity android:name=".Activity.Lecturer.LectActMain" />
+        <activity android:name=".Activity.Student.StuActMain" />
+
+    </application>
 
 </manifest>

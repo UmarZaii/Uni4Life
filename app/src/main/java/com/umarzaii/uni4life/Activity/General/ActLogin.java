@@ -27,7 +27,8 @@ import com.umarzaii.uni4life.R;
 
 import org.joda.time.DateTimeConstants;
 
-public class LoginActivity extends AppCompatActivity {
+public class ActLogin extends AppCompatActivity implements
+        View.OnClickListener, OnCompleteListener<AuthResult> {
 
     private FirebaseController controller;
 
@@ -44,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.general_activity_login);
+        setContentView(R.layout.gen_act_login);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCanceledOnTouchOutside(false);
@@ -59,27 +60,8 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = (Button)findViewById(R.id.btnLogin);
         btnGoToSignUp = (Button)findViewById(R.id.btnGoToSignUp);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                strUserEmail = edtUserEmailLogin.getText().toString().trim();
-                strUserPass = edtUserPassLogin.getText().toString().trim();
-
-                if (inputCheck()) {
-                    userLogin();
-                }
-                DateTimeController controller1 = new DateTimeController(LoginActivity.this);
-                controller1.getTimeTableDate(DateTimeConstants.MONDAY);
-            }
-        });
-
-        btnGoToSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
-            }
-        });
-
+        btnLogin.setOnClickListener(this);
+        btnGoToSignUp.setOnClickListener(this);
     }
 
     private boolean inputCheck() {
@@ -96,33 +78,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void userLogin() {
-
-        progressDialog.setMessage("LogIn, Please Wait...");
-        progressDialog.show();
-
-        controller.getFirebaseAuth().signInWithEmailAndPassword(strUserEmail,strUserPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-
-                if(!task.isSuccessful()) {
-                    progressDialog.dismiss();
-                    Toast.makeText(LoginActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
-                    Log.d("Error", task.getException().toString());
-                } else if (!controller.getCurrentUser().isEmailVerified()) {
-                    Intent intent = new Intent(LoginActivity.this, ActivationActivity.class);
-                    intent.putExtra("userEmail", strUserEmail);
-                    intent.putExtra("userPass", strUserPass);
-                    startActivity(intent);
-                    progressDialog.dismiss();
-                } else {
-                    checkUserCredentials();
-                }
-            }
-        });
-
-    }
-
     private void checkUserCredentials() {
         tblUser.getTable(controller.getUserID()).addValueEventListener(new ValueEventListener() {
             @Override
@@ -130,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (dataSnapshot.hasChild(DBConstants.userRole)) {
                     getUserRole();
                 } else {
-                    startActivity(new Intent(LoginActivity.this, CredentialsCheckActivity.class));
+                    startActivity(new Intent(ActLogin.this, ActCredentialsCheck.class));
                     progressDialog.dismiss();
                 }
             }
@@ -151,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                     String lecturerID = dataSnapshot.child(DBConstants.lecturerID).getValue().toString();
                     getLecturerStatus(lecturerID);
                 } else if (dataSnapshot.equals(DBConstants.student)) {
-//                    startActivity(new Intent(LoginActivity.this, StudentMainActivity.class));
+//                    startActivity(new Intent(ActLogin.this, StuActMain.class));
 //                    finish();
                     progressDialog.dismiss();
                 }
@@ -173,15 +128,15 @@ public class LoginActivity extends AppCompatActivity {
                 Boolean deptAdmin = Boolean.valueOf(dataSnapshot.child(DBConstants.deptAdmin).getValue().toString());
                 Boolean deptHead = Boolean.valueOf(dataSnapshot.child(DBConstants.deptHead).getValue().toString());
                 if (deptAdmin) {
-//                    startActivity(new Intent(LoginActivity.this, DeptAdminMainActivity.class));
+//                    startActivity(new Intent(ActLogin.this, DeptAdminMainActivity.class));
 //                    finish();
                     progressDialog.dismiss();
                 } else if (deptHead) {
-//                    startActivity(new Intent(LoginActivity.this, DeptHeadMainActivity.class));
+//                    startActivity(new Intent(ActLogin.this, DeptHeadMainActivity.class));
 //                    finish();
                     progressDialog.dismiss();
                 } else {
-//                    startActivity(new Intent(LoginActivity.this, LecturerMainActivity.class));
+//                    startActivity(new Intent(ActLogin.this, LecturerMainActivity.class));
 //                    finish();
                     progressDialog.dismiss();
                 }
@@ -195,4 +150,42 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.btnLogin:
+                strUserEmail = edtUserEmailLogin.getText().toString().trim();
+                strUserPass = edtUserPassLogin.getText().toString().trim();
+                if (inputCheck()) {
+                    progressDialog.setMessage("LogIn, Please Wait...");
+                    progressDialog.show();
+                    controller.getFirebaseAuth().signInWithEmailAndPassword(strUserEmail,strUserPass).addOnCompleteListener(this);
+                }
+                DateTimeController controller1 = new DateTimeController(ActLogin.this);
+                controller1.getTimeTableDate(DateTimeConstants.MONDAY);
+                break;
+            case R.id.btnGoToSignUp:
+                startActivity(new Intent(ActLogin.this, ActSignUp.class));
+                break;
+            default:
+                Toast.makeText(this, "This feature is in development", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
+    @Override
+    public void onComplete(@NonNull Task<AuthResult> task) {
+        if(!task.isSuccessful()) {
+            progressDialog.dismiss();
+            Toast.makeText(ActLogin.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+            Log.d("Error", task.getException().toString());
+        } else if (!controller.getCurrentUser().isEmailVerified()) {
+            Intent intent = new Intent(ActLogin.this, ActActivation.class);
+            intent.putExtra("userPass", strUserPass);
+            startActivity(intent);
+            progressDialog.dismiss();
+        } else {
+            checkUserCredentials();
+        }
+    }
 }

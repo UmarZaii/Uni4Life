@@ -5,11 +5,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.umarzaii.uni4life.Controller.FirebaseController;
 import com.umarzaii.uni4life.R;
 
-public class CredentialsCheckActivity extends AppCompatActivity {
+public class ActCredentialsCheck extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseController controller;
 
@@ -18,26 +19,15 @@ public class CredentialsCheckActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.general_activity_credentialscheck);
+        setContentView(R.layout.gen_activity_credentialscheck);
 
         controller = new FirebaseController();
 
         btnContAsLect = (Button)findViewById(R.id.btnContAsLect);
         btnContAsStudent = (Button)findViewById(R.id.btnContAsStudent);
 
-        btnContAsLect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(CredentialsCheckActivity.this, QRCodeActivity.class));
-            }
-        });
-
-        btnContAsStudent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(CredentialsCheckActivity.this, CredentialsAddActivity.class));
-            }
-        });
+        btnContAsLect.setOnClickListener(this);
+        btnContAsStudent.setOnClickListener(this);
     }
 
     @Override
@@ -46,4 +36,18 @@ public class CredentialsCheckActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.btnContAsLect:
+                startActivity(new Intent(ActCredentialsCheck.this, ActQRCode.class));
+                break;
+            case R.id.btnContAsStudent:
+                startActivity(new Intent(ActCredentialsCheck.this, ActCredentialsAdd.class));
+                break;
+            default:
+                Toast.makeText(this, "This feature is in development", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
 }

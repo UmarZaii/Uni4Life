@@ -3,6 +3,7 @@ package com.umarzaii.uni4life.Model;
 public class LecturerModel {
 
     private String lecturerID;
+    private String lecturerName;
     private String facultyID;
     private String deptID;
     private Boolean deptAdmin;
@@ -17,6 +18,14 @@ public class LecturerModel {
 
     public void setLecturerID(String lecturerID) {
         this.lecturerID = lecturerID;
+    }
+
+    public String getLecturerName() {
+        return lecturerName;
+    }
+
+    public void setLecturerName(String lecturerName) {
+        this.lecturerName = lecturerName;
     }
 
     public String getFacultyID() {

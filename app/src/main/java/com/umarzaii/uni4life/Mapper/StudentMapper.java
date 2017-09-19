@@ -4,7 +4,6 @@ import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 import com.umarzaii.uni4life.Database.DBConstants;
 import com.umarzaii.uni4life.Model.StudentModel;
-import com.umarzaii.uni4life.Model.SubjectModel;
 
 import java.util.HashMap;
 import java.util.Map;

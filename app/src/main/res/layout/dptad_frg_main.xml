@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btnDeptGoToCLList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CLASS LOCATION"
+        android:layout_above="@+id/btnDeptGoToUCList"
+        android:layout_alignLeft="@+id/btnDeptGoToUCList"
+        android:layout_alignStart="@+id/btnDeptGoToUCList" />
+
+    <Button
+        android:id="@+id/btnDeptGoToUCList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="STUDENT CLASS"
+        android:layout_above="@+id/btnDeptGoToLectList"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btnDeptGoToLectList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LECTURER LIST"
+        android:layout_above="@+id/btnMyTimeTable"
+        android:layout_alignLeft="@+id/btnMyTimeTable"
+        android:layout_alignStart="@+id/btnMyTimeTable" />
+
+    <Button
+        android:id="@+id/btnMyTimeTable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MY TIMETABLE"
+        android:layout_marginBottom="72dp"
+        android:layout_above="@+id/btnLogOut"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btnLogOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOG OUT"
+        android:layout_marginBottom="61dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

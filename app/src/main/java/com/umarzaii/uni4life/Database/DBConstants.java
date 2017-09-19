@@ -46,6 +46,7 @@ public class DBConstants {
 
     //USER CLASS CONSTANTS
     public static final String userClassID       = "userClassID";
+    public static final String userClassName     = "userClassName";
     public static final String semesterID        = "semesterID";
 
     //CLASS LOCATION CONSTANTS

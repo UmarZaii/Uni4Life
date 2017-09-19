@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btnScanLect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SCAN QRCODE"
+        android:layout_marginTop="79dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/txtUserID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="userID"
+        android:layout_below="@+id/btnScanLect"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp" />
+
+    <EditText
+        android:id="@+id/edtLecturerID"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="lecturer ID"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/edtLecturerName"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="lecturer Name"
+        android:layout_below="@+id/edtLecturerID"
+        android:layout_alignLeft="@+id/edtLecturerID"
+        android:layout_alignStart="@+id/edtLecturerID" />
+
+    <Button
+        android:id="@+id/btnAddLect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:text="ADD LECT"
+        android:layout_below="@+id/edtLecturerName"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

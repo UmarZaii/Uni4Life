@@ -16,7 +16,7 @@ import com.umarzaii.uni4life.Database.TblLecturer;
 import com.umarzaii.uni4life.Database.TblUser;
 import com.umarzaii.uni4life.R;
 
-public class LaunchActivity extends AppCompatActivity {
+public class ActLaunch extends AppCompatActivity {
 
     private FirebaseAuth.AuthStateListener fAuthListener;
     private FirebaseController controller;
@@ -27,7 +27,7 @@ public class LaunchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.general_activity_launch);
+        setContentView(R.layout.gen_act_launch);
 
         controller = new FirebaseController();
 
@@ -40,7 +40,7 @@ public class LaunchActivity extends AppCompatActivity {
                 if(firebaseAuth.getCurrentUser() != null){
                     checkUserLogin();
                 } else {
-                    startActivity(new Intent(LaunchActivity.this, LoginActivity.class));
+                    startActivity(new Intent(ActLaunch.this, ActLogin.class));
                     finish();
                 }
             }
@@ -68,7 +68,7 @@ public class LaunchActivity extends AppCompatActivity {
                     getUserRole();
                 } else {
                     controller.getFirebaseAuth().signOut();
-                    startActivity(new Intent(LaunchActivity.this, LoginActivity.class));
+                    startActivity(new Intent(ActLaunch.this, ActLogin.class));
                     finish();
                 }
             }
@@ -87,7 +87,7 @@ public class LaunchActivity extends AppCompatActivity {
             checkUserCredentials();
         } else {
             controller.getFirebaseAuth().signOut();
-            startActivity(new Intent(LaunchActivity.this, LoginActivity.class));
+            startActivity(new Intent(ActLaunch.this, ActLogin.class));
             finish();
         }
 
@@ -102,7 +102,7 @@ public class LaunchActivity extends AppCompatActivity {
                     String lecturerID = dataSnapshot.child(DBConstants.lecturerID).getValue().toString();
                     getLecturerStatus(lecturerID);
                 } else if (dataSnapshot.equals(DBConstants.student)) {
-//                    startActivity(new Intent(LaunchActivity.this, StudentMainActivity.class));
+//                    startActivity(new Intent(ActLaunch.this, StuActMain.class));
 //                    finish();
                 }
             }
@@ -123,13 +123,13 @@ public class LaunchActivity extends AppCompatActivity {
                 Boolean deptAdmin = Boolean.valueOf(dataSnapshot.child(DBConstants.deptAdmin).getValue().toString());
                 Boolean deptHead = Boolean.valueOf(dataSnapshot.child(DBConstants.deptHead).getValue().toString());
                 if (deptAdmin) {
-//                    startActivity(new Intent(LaunchActivity.this, DeptAdminMainActivity.class));
+//                    startActivity(new Intent(ActLaunch.this, DeptAdminMainActivity.class));
 //                    finish();
                 } else if (deptHead) {
-//                    startActivity(new Intent(LaunchActivity.this, DeptHeadMainActivity.class));
+//                    startActivity(new Intent(ActLaunch.this, DeptHeadMainActivity.class));
 //                    finish();
                 } else {
-//                    startActivity(new Intent(LaunchActivity.this, LecturerMainActivity.class));
+//                    startActivity(new Intent(ActLaunch.this, LecturerMainActivity.class));
 //                    finish();
                 }
             }

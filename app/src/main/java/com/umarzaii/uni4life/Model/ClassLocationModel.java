@@ -2,10 +2,19 @@ package com.umarzaii.uni4life.Model;
 
 public class ClassLocationModel {
 
+    private String classLocationID;
     private String classLocationName;
     private String facultyID;
 
     public ClassLocationModel() {
+    }
+
+    public String getClassLocationID() {
+        return classLocationID;
+    }
+
+    public void setClassLocationID(String classLocationID) {
+        this.classLocationID = classLocationID;
     }
 
     public String getClassLocationName() {

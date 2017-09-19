@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="35dp">
+
+    <TextView
+        android:layout_height="35dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="28dp"
+        android:textSize="14dp"
+        android:id="@+id/txtDay"
+        android:hint=""/>
+
+    <TextView
+        android:layout_height="35dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="28dp"
+        android:textSize="14dp"
+        android:id="@+id/txt0809"
+        android:hint=""/>
+
+    <TextView
+        android:layout_height="35dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="30dp"
+        android:textSize="14dp"
+        android:id="@+id/txt0910"
+        android:hint=""/>
+
+    <TextView
+        android:layout_height="35dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="28dp"
+        android:textSize="14dp"
+        android:id="@+id/txt1011"
+        android:hint=""/>
+
+    <TextView
+        android:layout_height="35dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="30dp"
+        android:textSize="14dp"
+        android:id="@+id/txt1112"
+        android:hint=""/>
+
+    <TextView
+        android:layout_height="35dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="28dp"
+        android:textSize="14dp"
+        android:id="@+id/txt1213"
+        android:hint=""/>
+
+    <TextView
+        android:layout_height="35dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="28dp"
+        android:textSize="14dp"
+        android:id="@+id/txt1314"
+        android:hint=""/>
+
+    <TextView
+        android:layout_height="35dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="28dp"
+        android:textSize="14dp"
+        android:id="@+id/txt1415"
+        android:hint=""/>
+
+    <TextView
+        android:layout_height="35dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="28dp"
+        android:textSize="14dp"
+        android:id="@+id/txt1516"
+        android:hint=""/>
+
+    <TextView
+        android:layout_height="35dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="28dp"
+        android:textSize="14dp"
+        android:id="@+id/txt1617"
+        android:hint=""/>
+
+</LinearLayout>
