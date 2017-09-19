@@ -7,13 +7,16 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.umarzaii.uni4life.Controller.DropdownController;
 import com.umarzaii.uni4life.Controller.FirebaseController;
 import com.umarzaii.uni4life.Controller.FragmentController;
 import com.umarzaii.uni4life.Database.DBConstants;
@@ -50,7 +53,7 @@ public class DptAdmFrgCLAdd extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.dptad_frg_lectadd,container,false);
+        View view = inflater.inflate(R.layout.dptad_frg_cladd,container,false);
         return view;
     }
 
@@ -129,18 +132,18 @@ public class DptAdmFrgCLAdd extends Fragment implements View.OnClickListener {
         dataMapCl.put(classLocationID, clMapper.checkToMap());
         tblClassLocation.getTable().updateChildren(dataMapCl);
 
-        TimeTableMapper ttMapper = new TimeTableMapper();
+        TimeTableMapper ttMapper = new TimeTableMapper(getActivity());
         final Map<String, Object> dataMapTt = new HashMap<String, Object>();
         dataMapTt.put(classLocationID, ttMapper.timeTableInit(DBConstants.tblClassLocation));
-        tblTimeFrame.getTable().updateChildren(dataMapTt);
+        tblTimeFrame.getTblClassLocation().updateChildren(dataMapTt);
 
-        fragmentController.popBackStack("ScanLect");
+        fragmentController.popBackStack("AddCL");
     }
 
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.btnAddLect:
+            case R.id.btnAddCL:
                 classLocationID = edtCLID.getText().toString().trim();
                 classLocationName = edtCLName.getText().toString().trim();
                 if (inputCheck())

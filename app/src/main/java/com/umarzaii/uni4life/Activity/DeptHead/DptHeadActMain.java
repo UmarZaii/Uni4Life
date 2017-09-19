@@ -21,7 +21,7 @@ public class DptHeadActMain extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         fragmentController = new FragmentController(getSupportFragmentManager());
-        fragmentController.startFragment(new LectFrgMain(), R.id.dptHdContentMain);
+        fragmentController.startFragment(new DptHeadFrgMain(), R.id.dptHdContentMain);
     }
 
     @Override

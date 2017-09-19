@@ -45,11 +45,13 @@ public class DBConstants {
     public static final String subjectName       = "subjectName";
 
     //USER CLASS CONSTANTS
+    public static final String userClass         = "userClass";
     public static final String userClassID       = "userClassID";
     public static final String userClassName     = "userClassName";
     public static final String semesterID        = "semesterID";
 
     //CLASS LOCATION CONSTANTS
+    public static final String classLocation     = "classLocation";
     public static final String classLocationID   = "classLocationID";
     public static final String classLocationName = "classLocationName";
 

@@ -19,22 +19,13 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:id="@+id/edtUCName"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="User Class Name"
-        android:layout_below="@+id/edtUCID"
-        android:layout_alignLeft="@+id/edtUCID"
-        android:layout_alignStart="@+id/edtUCID" />
-
     <Button
         android:id="@+id/btnAddUC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
         android:text="ADD USER CLASS"
-        android:layout_below="@+id/edtUCName"
+        android:layout_below="@+id/edtUCID"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

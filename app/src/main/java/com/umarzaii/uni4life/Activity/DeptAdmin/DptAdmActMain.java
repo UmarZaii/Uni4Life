@@ -21,7 +21,7 @@ public class DptAdmActMain extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         fragmentController = new FragmentController(getSupportFragmentManager());
-        fragmentController.startFragment(new LectFrgMain(), R.id.dptAdContentMain);
+        fragmentController.startFragment(new DptAdmFrgMain(), R.id.dptAdContentMain);
     }
 
     @Override

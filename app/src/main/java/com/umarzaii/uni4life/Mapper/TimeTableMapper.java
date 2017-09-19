@@ -1,5 +1,8 @@
 package com.umarzaii.uni4life.Mapper;
 
+import android.app.Activity;
+import android.content.Context;
+
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 import com.umarzaii.uni4life.Database.DBConstants;
@@ -16,11 +19,13 @@ public class TimeTableMapper {
     TimeTableModel model;
     DropdownController controller;
 
-    public TimeTableMapper() {
+    public TimeTableMapper(Activity activity) {
+        controller = new DropdownController(activity);
     }
 
-    public TimeTableMapper(TimeTableModel model) {
+    public TimeTableMapper(Activity activity, TimeTableModel model) {
         this.model = model;
+        controller = new DropdownController(activity);
     }
 
     @Exclude

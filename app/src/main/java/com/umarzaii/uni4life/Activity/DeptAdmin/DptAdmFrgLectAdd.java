@@ -208,10 +208,10 @@ public class DptAdmFrgLectAdd extends Fragment implements View.OnClickListener {
         dataMapLect.put(lecturerID, lecturerMapper.detailsToMap());
         tblLecturer.getTable().updateChildren(dataMapLect);
 
-        TimeTableMapper ttMapper = new TimeTableMapper();
+        TimeTableMapper ttMapper = new TimeTableMapper(getActivity());
         final Map<String, Object> dataMapTt = new HashMap<String, Object>();
         dataMapTt.put(lecturerID, ttMapper.timeTableInit(DBConstants.tblLecturer));
-        tblTimeFrame.getTable().updateChildren(dataMapTt);
+        tblTimeFrame.getTblLecturer().updateChildren(dataMapTt);
 
         fragmentController.popBackStack("ScanLect");
     }

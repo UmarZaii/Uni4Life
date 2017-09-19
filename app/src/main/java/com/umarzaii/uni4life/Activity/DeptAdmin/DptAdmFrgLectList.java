@@ -82,7 +82,9 @@ public class DptAdmFrgLectList extends Fragment implements View.OnClickListener 
                     public void onClick(View v) {
                         Bundle bundle = new Bundle();
                         bundle.putString("lecturerID", lecturerID);
-//                        frgController.stackFragment(new DeptAdminTimeFrameDayFragment(),bundle,"TimeFrameDay");
+                        bundle.putString("title", lecturerID + " TimeTable");
+                        bundle.putString("status", DBConstants.lecturer);
+                        frgController.stackFragment(new DptAdmFrgTTList(), R.id.dptAdContentMain, bundle, "TimeFrameDay");
                     }
                 });
 

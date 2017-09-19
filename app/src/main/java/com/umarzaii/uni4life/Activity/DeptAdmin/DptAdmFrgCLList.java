@@ -15,13 +15,14 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.umarzaii.uni4life.Controller.FragmentController;
 import com.umarzaii.uni4life.Controller.RecyclerViewController;
 import com.umarzaii.uni4life.Database.DBConstants;
+import com.umarzaii.uni4life.Database.TblClassLocation;
 import com.umarzaii.uni4life.Database.TblLecturer;
 import com.umarzaii.uni4life.Model.ClassLocationModel;
 import com.umarzaii.uni4life.R;
 
 public class DptAdmFrgCLList extends Fragment implements View.OnClickListener {
 
-    private TblLecturer tblLecturer;
+    private TblClassLocation tblClassLocation;
 
     private FragmentController frgController;
     private RecyclerViewController rvController;
@@ -44,7 +45,7 @@ public class DptAdmFrgCLList extends Fragment implements View.OnClickListener {
         getActivity().setTitle("Class Location List");
         View v = getView();
 
-        tblLecturer = new TblLecturer();
+        tblClassLocation = new TblClassLocation();
         frgController = new FragmentController(getActivity().getSupportFragmentManager());
         rvController = new RecyclerViewController(getActivity());
 
@@ -66,7 +67,7 @@ public class DptAdmFrgCLList extends Fragment implements View.OnClickListener {
                 ClassLocationModel.class,
                 R.layout.rvitem_cllist,
                 ClassLocactionViewHolder.class,
-                tblLecturer.getTable().orderByChild(DBConstants.facultyID).equalTo(facultyID)
+                tblClassLocation.getTable().orderByChild(DBConstants.facultyID).equalTo(facultyID)
 
         ) {
             @Override
@@ -82,7 +83,9 @@ public class DptAdmFrgCLList extends Fragment implements View.OnClickListener {
                     public void onClick(View v) {
                         Bundle bundle = new Bundle();
                         bundle.putString("classLocationID", classLocationID);
-//                        frgController.stackFragment(new DeptAdminTimeFrameDayFragment(),bundle,"TimeFrameDay");
+                        bundle.putString("title", classLocationID + " TimeTable");
+                        bundle.putString("status", DBConstants.classLocation);
+                        frgController.stackFragment(new DptAdmFrgTTList(), R.id.dptAdContentMain, bundle, "TimeFrameDay");
                     }
                 });
 

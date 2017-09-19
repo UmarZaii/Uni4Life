@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -82,7 +83,9 @@ public class DptAdmFrgUCList extends Fragment implements View.OnClickListener {
                     public void onClick(View v) {
                         Bundle bundle = new Bundle();
                         bundle.putString("userClassID", userClassID);
-//                        frgController.stackFragment(new DeptAdminTimeFrameDayFragment(),bundle,"TimeFrameDay");
+                        bundle.putString("title", userClassID + " TimeTable");
+                        bundle.putString("status", DBConstants.userClass);
+                        frgController.stackFragment(new DptAdmFrgTTList(), R.id.dptAdContentMain, bundle,"TimeFrameDay");
                     }
                 });
 
@@ -96,7 +99,7 @@ public class DptAdmFrgUCList extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.btnGoToAddUC:
-//                frgController.stackFragment(new DptAdmFrgLectAdd(), R.id.dptAdContentMain, "AddLect");
+                frgController.stackFragment(new DptAdmFrgUCAdd(), R.id.dptAdContentMain, "Add UserClass");
                 break;
             default:
                 Toast.makeText(getActivity(), "This feature is in development", Toast.LENGTH_SHORT).show();

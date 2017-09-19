@@ -18,7 +18,7 @@ public class TblDepartment {
         return tblDepartment;
     }
     public DatabaseReference getTable(String deptID) {
-        return getTable(deptID);
+        return getTable().child(deptID);
     }
 
     //DETAILS

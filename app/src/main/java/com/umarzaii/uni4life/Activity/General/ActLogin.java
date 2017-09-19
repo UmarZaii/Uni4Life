@@ -18,6 +18,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.umarzaii.uni4life.Activity.DeptAdmin.DptAdmActMain;
+import com.umarzaii.uni4life.Activity.DeptHead.DptHeadActMain;
+import com.umarzaii.uni4life.Activity.Lecturer.LectActMain;
+import com.umarzaii.uni4life.Activity.Student.StuActMain;
 import com.umarzaii.uni4life.Controller.DateTimeController;
 import com.umarzaii.uni4life.Controller.FirebaseController;
 import com.umarzaii.uni4life.Database.DBConstants;
@@ -99,15 +103,15 @@ public class ActLogin extends AppCompatActivity implements
 
     private void getUserRole() {
 
-        tblUser.getUserRole(controller.getUserID()).addValueEventListener(new ValueEventListener() {
+        tblUser.getTable(controller.getUserID()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.equals(DBConstants.lecturer)) {
+                if (dataSnapshot.equals(DBConstants.lecturerID)) {
                     String lecturerID = dataSnapshot.child(DBConstants.lecturerID).getValue().toString();
                     getLecturerStatus(lecturerID);
-                } else if (dataSnapshot.equals(DBConstants.student)) {
-//                    startActivity(new Intent(ActLogin.this, StuActMain.class));
-//                    finish();
+                } else if (dataSnapshot.equals(DBConstants.studentID)) {
+                    startActivity(new Intent(ActLogin.this, StuActMain.class));
+                    finish();
                     progressDialog.dismiss();
                 }
             }
@@ -128,16 +132,16 @@ public class ActLogin extends AppCompatActivity implements
                 Boolean deptAdmin = Boolean.valueOf(dataSnapshot.child(DBConstants.deptAdmin).getValue().toString());
                 Boolean deptHead = Boolean.valueOf(dataSnapshot.child(DBConstants.deptHead).getValue().toString());
                 if (deptAdmin) {
-//                    startActivity(new Intent(ActLogin.this, DeptAdminMainActivity.class));
-//                    finish();
+                    startActivity(new Intent(ActLogin.this, DptAdmActMain.class));
+                    finish();
                     progressDialog.dismiss();
                 } else if (deptHead) {
-//                    startActivity(new Intent(ActLogin.this, DeptHeadMainActivity.class));
-//                    finish();
+                    startActivity(new Intent(ActLogin.this, DptHeadActMain.class));
+                    finish();
                     progressDialog.dismiss();
                 } else {
-//                    startActivity(new Intent(ActLogin.this, LecturerMainActivity.class));
-//                    finish();
+                    startActivity(new Intent(ActLogin.this, LectActMain.class));
+                    finish();
                     progressDialog.dismiss();
                 }
             }

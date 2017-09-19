@@ -72,12 +72,12 @@ public class DptAdmFrgTTList extends Fragment implements View.OnClickListener {
 
         rvController.init(rvTTList);
         txtTTTitle.setText(getArguments().getString("title"));
-        onLoad();
     }
 
     @Override
     public void onStart() {
         super.onStart();
+        onLoad();
 
         FirebaseRecyclerAdapter<TimeTableModel,TimeTableViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<TimeTableModel, TimeTableViewHolder>(
                 TimeTableModel.class,
@@ -175,13 +175,14 @@ public class DptAdmFrgTTList extends Fragment implements View.OnClickListener {
     }
 
     public void onLoad() {
+        System.out.println(getArguments().getString("userClassID"));
         if (getArguments().getString("status") == "MyTimeTable") {
             query = tblTimeFrame.getTblLecturer(controller.getUserID());
-        } else if(getArguments().getString("status") == "ClassLocation") {
+        } else if(getArguments().getString("status") == DBConstants.classLocation) {
             query = tblTimeFrame.getTblClassLocation(getArguments().getString("classLocationID"));
-        } else if(getArguments().getString("status") == "UserClass") {
+        } else if(getArguments().getString("status") == DBConstants.userClass) {
             query = tblTimeFrame.getTblUserClass(getArguments().getString("userClassID"));
-        } else if(getArguments().getString("status") == "Lecturer") {
+        } else if(getArguments().getString("status") == DBConstants.lecturer) {
             query = tblTimeFrame.getTblLecturer(getArguments().getString("lecturerID"));
         }
     }
@@ -191,11 +192,11 @@ public class DptAdmFrgTTList extends Fragment implements View.OnClickListener {
         viewHolder.setDay(dayID);
         if (getArguments().getString("status") == "MyTimeTable") {
             getLectTimeTable(viewHolder,controller.getUserID(),dayID);
-        } else if(getArguments().getString("status") == "ClassLocation") {
+        } else if(getArguments().getString("status") == DBConstants.classLocation) {
             getCLTimeTable(viewHolder,getArguments().getString("classLocationID"),dayID);
-        } else if(getArguments().getString("status") == "UserClass") {
+        } else if(getArguments().getString("status") == DBConstants.userClass) {
             getUCTimeTable(viewHolder,getArguments().getString("userClassID"),dayID);
-        } else if(getArguments().getString("status") == "Lecturer") {
+        } else if(getArguments().getString("status") == DBConstants.lecturer) {
             getLectTimeTable(viewHolder,getArguments().getString("lecturerID"),dayID);
         }
     }
