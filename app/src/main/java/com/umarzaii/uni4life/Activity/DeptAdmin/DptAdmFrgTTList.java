@@ -200,11 +200,12 @@ public class DptAdmFrgTTList extends Fragment implements View.OnClickListener {
         }
     }
 
-    public void getLectTimeTable(final TimeTableViewHolder viewHolder, String userID, String dayID) {
+    public void getLectTimeTable(final TimeTableViewHolder viewHolder, String userID, final String dayID) {
         tblTimeFrame.getLCDay(userID,dayID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 setViewHolder(viewHolder,dataSnapshot);
+                onClick(viewHolder,dayID);
             }
 
             @Override
@@ -219,7 +220,7 @@ public class DptAdmFrgTTList extends Fragment implements View.OnClickListener {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 setViewHolder(viewHolder,dataSnapshot);
-                onClickCL(viewHolder,dayID);
+                onClick(viewHolder,dayID);
             }
 
             @Override
@@ -234,6 +235,7 @@ public class DptAdmFrgTTList extends Fragment implements View.OnClickListener {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 setViewHolder(viewHolder,dataSnapshot);
+                onClick(viewHolder,dayID);
             }
 
             @Override
@@ -255,27 +257,98 @@ public class DptAdmFrgTTList extends Fragment implements View.OnClickListener {
         viewHolder.setTime1617(dataSnapshot.child("1600-1700").child(DBConstants.subjectID).getValue().toString());
     }
 
-    public void onClickCL(TimeTableViewHolder viewHolder, final String dayID) {
+    public void onClick(TimeTableViewHolder viewHolder, final String dayID) {
         viewHolder.txt0809.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickCLEvent(getArguments().getString("classLocationID"), dayID, "0800-0900");
+                onClickEvent(dayID,"0800-0900");
+            }
+        });
+        viewHolder.txt0910.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickEvent(dayID,"0900-1000");
+            }
+        });
+        viewHolder.txt1011.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickEvent(dayID,"1000-1100");
+            }
+        });
+        viewHolder.txt1112.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickEvent(dayID,"1100-1200");
+            }
+        });
+        viewHolder.txt1213.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickEvent(dayID,"1200-1300");
+            }
+        });
+        viewHolder.txt1314.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickEvent(dayID,"1300-1400");
+            }
+        });
+        viewHolder.txt1415.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickEvent(dayID,"1400-1500");
+            }
+        });
+        viewHolder.txt1516.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickEvent(dayID,"1500-1600");
+            }
+        });
+        viewHolder.txt1617.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickEvent(dayID,"1600-1700");
             }
         });
     }
 
-    public void onClickCLEvent(String classLocationID, String dayID, final String timeID) {
-        tblTimeFrame.getCLTime(classLocationID,dayID,timeID).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Toast.makeText(getActivity(), "test", Toast.LENGTH_SHORT).show();
-            }
+    public void onClickEvent(String dayID, String timeID) {
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+        if(getArguments().getString("status") == DBConstants.lecturer ||
+                getArguments().getString("status") == "MyTimeTable") {
 
-            }
-        });
+            String lecturerID = getArguments().getString("lecturerID");
+            Bundle bundle = new Bundle();
+            bundle.putString("dayID", dayID);
+            bundle.putString("timeID", timeID);
+            bundle.putString("lecturerID", lecturerID);
+            bundle.putString("status", DBConstants.lecturer);
+//            frgController.stackFragment(new DptAdmFrgTTList(), R.id.dptAdContentMain, bundle, "TimeFrameDetails");
+
+        } else if(getArguments().getString("status") == DBConstants.classLocation) {
+
+            String classLocationID = getArguments().getString("classLocationID");
+            Bundle bundle = new Bundle();
+            bundle.putString("dayID", dayID);
+            bundle.putString("timeID", timeID);
+            bundle.putString("classLocationID", classLocationID);
+            bundle.putString("status", DBConstants.classLocation);
+//            frgController.stackFragment(new DptAdmFrgTTList(), R.id.dptAdContentMain, bundle, "TimeFrameDetails");
+
+        } else if(getArguments().getString("status") == DBConstants.userClass) {
+
+            final String userClassID = getArguments().getString("userClassID");
+            Bundle bundle = new Bundle();
+            bundle.putString("dayID", dayID);
+            bundle.putString("timeID", timeID);
+            bundle.putString("userClassID", userClassID);
+            bundle.putString("status", DBConstants.userClass);
+//            frgController.stackFragment(new DptAdmFrgTTList(), R.id.dptAdContentMain, bundle, "TimeFrameDetails");
+//            tblTimeFrame.getUCTime(userClassID,dayID,timeID).addValueEventListener();
+
+        }
     }
 
 }

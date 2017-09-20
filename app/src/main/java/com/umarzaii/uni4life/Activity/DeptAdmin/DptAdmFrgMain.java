@@ -16,6 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.umarzaii.uni4life.Activity.General.ActSignUp;
 import com.umarzaii.uni4life.Controller.FirebaseController;
 import com.umarzaii.uni4life.Controller.FragmentController;
+import com.umarzaii.uni4life.Database.DBConstants;
 import com.umarzaii.uni4life.Database.TblLecturer;
 import com.umarzaii.uni4life.Database.TblUser;
 import com.umarzaii.uni4life.R;
@@ -91,7 +92,7 @@ public class DptAdmFrgMain extends Fragment implements View.OnClickListener{
                 break;
             case R.id.btnMyTimeTable:
                 Bundle ttBundle = new Bundle();
-                ttBundle.putString("facultyID", facultyID);
+                ttBundle.putString("lecturerID", lecturerID);
                 ttBundle.putString("title", "My TimeTable");
                 ttBundle.putString("status", "MyTimeTable");
                 fragmentController.stackFragment(new DptAdmFrgTTList(), R.id.dptAdContentMain, ttBundle, "MyTimeTable");
