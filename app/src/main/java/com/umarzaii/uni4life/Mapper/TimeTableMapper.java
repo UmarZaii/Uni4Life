@@ -83,7 +83,7 @@ public class TimeTableMapper {
     }
 
     @Exclude
-    private Map<String, Object> timeFrameInit(String initType) {
+    private Map<String, Object> timeFrameInit(String initType, String dayID) {
         ArrayList<String> time = controller.timeHour();
         HashMap<String, Object> timeFrame = new HashMap<>();
         for (String timeID: time) {
@@ -96,6 +96,7 @@ public class TimeTableMapper {
                 details = lecturerInit();
             }
             timeFrame.put(timeID, details);
+            timeFrame.put(DBConstants.dayID, dayID);
         }
         return timeFrame;
     }
@@ -105,7 +106,7 @@ public class TimeTableMapper {
         ArrayList<String> day = controller.timeDay();
         HashMap<String, Object> result = new HashMap<>();
         for (String dayID: day) {
-            Map<String, Object> details = timeFrameInit(initType);
+            Map<String, Object> details = timeFrameInit(initType,dayID);
             result.put(dayID, details);
         }
         return result;

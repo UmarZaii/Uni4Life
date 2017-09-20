@@ -175,7 +175,6 @@ public class DptAdmFrgTTList extends Fragment implements View.OnClickListener {
     }
 
     public void onLoad() {
-        System.out.println(getArguments().getString("userClassID"));
         if (getArguments().getString("status") == "MyTimeTable") {
             query = tblTimeFrame.getTblLecturer(controller.getUserID());
         } else if(getArguments().getString("status") == DBConstants.classLocation) {
@@ -189,7 +188,7 @@ public class DptAdmFrgTTList extends Fragment implements View.OnClickListener {
 
     public void populate(TimeTableViewHolder viewHolder, TimeTableModel model) {
         final String dayID = model.getDayID();
-        viewHolder.setDay(dayID);
+        viewHolder.setDay(dayID.substring(1,4).toUpperCase());
         if (getArguments().getString("status") == "MyTimeTable") {
             getLectTimeTable(viewHolder,controller.getUserID(),dayID);
         } else if(getArguments().getString("status") == DBConstants.classLocation) {
