@@ -18,7 +18,7 @@ public class ClassLocationMapper {
     }
 
     @Exclude
-    public Map<String, Object> checkToMap() {
+    public Map<String, Object> detailsToMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put(DBConstants.facultyID, model.getFacultyID());
         result.put(DBConstants.classLocationID, model.getClassLocationID());

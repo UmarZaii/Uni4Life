@@ -129,7 +129,7 @@ public class DptAdmFrgCLAdd extends Fragment implements View.OnClickListener {
         ClassLocationMapper clMapper = new ClassLocationMapper(clModel);
 
         final Map<String, Object> dataMapCl = new HashMap<String, Object>();
-        dataMapCl.put(classLocationID, clMapper.checkToMap());
+        dataMapCl.put(classLocationID, clMapper.detailsToMap());
         tblClassLocation.getTable().updateChildren(dataMapCl);
 
         TimeTableMapper ttMapper = new TimeTableMapper(getActivity());

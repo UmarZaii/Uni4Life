@@ -24,6 +24,10 @@ public class DBConstants {
     public static final String lecturer          = "lecturer";
     public static final String student           = "student";
 
+    //ADMIN CONSTANTS
+    public static final String adminEmail        = "adminEmail";
+    public static final String adminName         = "adminName";
+
     //USER CONSTANTS
     public static final String userID            = "userID";
     public static final String userEmail         = "userEmail";
