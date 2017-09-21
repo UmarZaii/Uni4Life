@@ -8,31 +8,31 @@ import android.support.v4.app.FragmentTransaction;
 public class FragmentController {
 
     private FragmentManager fragmentManager;
-    private Fragment currentFragment;
+    private Fragment targetFragment;
 
     public FragmentController(FragmentManager fragmentManager) {
         this.fragmentManager = fragmentManager;
     }
 
     public void startFragment(Fragment fragmentClass, int containerViewId) {
-        currentFragment = fragmentClass;
+        targetFragment = fragmentClass;
         startTransaction(containerViewId);
     }
 
     public void startFragment(Fragment fragmentClass, int containerViewId, Bundle bundle) {
-        currentFragment = fragmentClass;
-        currentFragment.setArguments(bundle);
+        targetFragment = fragmentClass;
+        targetFragment.setArguments(bundle);
         startTransaction(containerViewId);
     }
 
     public void stackFragment(Fragment fragmentClass, int containerViewId, String stackName) {
-        currentFragment = fragmentClass;
+        targetFragment = fragmentClass;
         startTransaction(containerViewId, stackName);
     }
 
     public void stackFragment(Fragment fragmentClass, int containerViewId, Bundle bundle, String stackName) {
-        currentFragment = fragmentClass;
-        currentFragment.setArguments(bundle);
+        targetFragment = fragmentClass;
+        targetFragment.setArguments(bundle);
         startTransaction(containerViewId, stackName);
     }
 
@@ -42,13 +42,13 @@ public class FragmentController {
 
     private void startTransaction(int containerViewId) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(containerViewId, currentFragment);
+        transaction.replace(containerViewId, targetFragment);
         transaction.commit();
     }
 
     private void startTransaction(int containerViewId, String stackName) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(containerViewId, currentFragment);
+        transaction.replace(containerViewId, targetFragment);
         transaction.addToBackStack(stackName);
         transaction.commit();
     }

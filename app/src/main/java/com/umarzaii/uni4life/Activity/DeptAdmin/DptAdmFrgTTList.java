@@ -30,7 +30,7 @@ import com.umarzaii.uni4life.R;
 
 import java.util.ArrayList;
 
-public class DptAdmFrgTTList extends Fragment implements View.OnClickListener {
+public class DptAdmFrgTTList extends Fragment {
 
     private TblTimeFrame tblTimeFrame;
     private Query query;
@@ -92,18 +92,6 @@ public class DptAdmFrgTTList extends Fragment implements View.OnClickListener {
         };
 
         rvTTList.setAdapter(firebaseRecyclerAdapter);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch(v.getId()){
-            case R.id.btnGoToAddUC:
-//                frgController.stackFragment(new DptAdmFrgLectAdd(), R.id.dptAdContentMain, "AddLect");
-                break;
-            default:
-                Toast.makeText(getActivity(), "This feature is in development", Toast.LENGTH_SHORT).show();
-                break;
-        }
     }
 
     public static class TimeTableViewHolder extends RecyclerView.ViewHolder {
@@ -325,7 +313,7 @@ public class DptAdmFrgTTList extends Fragment implements View.OnClickListener {
             bundle.putString("timeID", timeID);
             bundle.putString("lecturerID", lecturerID);
             bundle.putString("status", DBConstants.lecturer);
-//            frgController.stackFragment(new DptAdmFrgTTList(), R.id.dptAdContentMain, bundle, "TimeFrameDetails");
+            frgController.stackFragment(new DptAdmFrgTTView(), R.id.dptAdContentMain, bundle, "TimeFrameDetails");
 
         } else if(getArguments().getString("status") == DBConstants.classLocation) {
 
@@ -335,7 +323,7 @@ public class DptAdmFrgTTList extends Fragment implements View.OnClickListener {
             bundle.putString("timeID", timeID);
             bundle.putString("classLocationID", classLocationID);
             bundle.putString("status", DBConstants.classLocation);
-//            frgController.stackFragment(new DptAdmFrgTTList(), R.id.dptAdContentMain, bundle, "TimeFrameDetails");
+            frgController.stackFragment(new DptAdmFrgTTView(), R.id.dptAdContentMain, bundle, "TimeFrameDetails");
 
         } else if(getArguments().getString("status") == DBConstants.userClass) {
 
@@ -345,8 +333,7 @@ public class DptAdmFrgTTList extends Fragment implements View.OnClickListener {
             bundle.putString("timeID", timeID);
             bundle.putString("userClassID", userClassID);
             bundle.putString("status", DBConstants.userClass);
-//            frgController.stackFragment(new DptAdmFrgTTList(), R.id.dptAdContentMain, bundle, "TimeFrameDetails");
-//            tblTimeFrame.getUCTime(userClassID,dayID,timeID).addValueEventListener();
+            frgController.stackFragment(new DptAdmFrgTTView(), R.id.dptAdContentMain, bundle, "TimeFrameDetails");
 
         }
     }
