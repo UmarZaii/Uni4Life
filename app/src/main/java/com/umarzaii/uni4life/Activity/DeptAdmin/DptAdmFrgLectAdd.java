@@ -193,10 +193,7 @@ public class DptAdmFrgLectAdd extends Fragment implements View.OnClickListener {
         userModel.setUserRole(DBConstants.lecturer);
         userModel.setLecturerID(lecturerID);
         UserMapper userMapper = new UserMapper(userModel);
-
-        final Map<String, Object> dataMapUser = new HashMap<String, Object>();
-        dataMapUser.put(userID, userMapper.credentialsToMap());
-        tblUser.getTable().updateChildren(dataMapUser);
+        tblUser.getTable(userID).updateChildren(userMapper.credentialsToMap());
 
         LecturerModel lecturerModel = new LecturerModel();
         lecturerModel.setFacultyID(facultyID);
@@ -206,17 +203,14 @@ public class DptAdmFrgLectAdd extends Fragment implements View.OnClickListener {
         lecturerModel.setDeptAdmin(false);
         lecturerModel.setDeptHead(false);
         LecturerMapper lecturerMapper = new LecturerMapper(lecturerModel);
-
-        final Map<String, Object> dataMapLect = new HashMap<String, Object>();
-        dataMapLect.put(lecturerID, lecturerMapper.detailsToMap());
-        tblLecturer.getTable().updateChildren(dataMapLect);
+        tblLecturer.getTable(lecturerID).updateChildren(lecturerMapper.detailsToMap());
 
         TimeTableMapper ttMapper = new TimeTableMapper(getActivity());
         final Map<String, Object> dataMapTt = new HashMap<String, Object>();
         dataMapTt.put(lecturerID, ttMapper.timeTableInit(DBConstants.tblLecturer));
         tblTimeFrame.getTblLecturer().updateChildren(dataMapTt);
 
-        fragmentController.popBackStack("ScanLect");
+        fragmentController.popBackStack("AddLect");
     }
 
     @Override
