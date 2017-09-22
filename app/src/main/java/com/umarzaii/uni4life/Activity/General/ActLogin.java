@@ -106,10 +106,10 @@ public class ActLogin extends AppCompatActivity implements
         tblUser.getTable(controller.getUserID()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.equals(DBConstants.lecturerID)) {
+                if (dataSnapshot.hasChild(DBConstants.lecturerID)) {
                     String lecturerID = dataSnapshot.child(DBConstants.lecturerID).getValue().toString();
                     getLecturerStatus(lecturerID);
-                } else if (dataSnapshot.equals(DBConstants.studentID)) {
+                } else if (dataSnapshot.hasChild(DBConstants.studentID)) {
                     startActivity(new Intent(ActLogin.this, StuActMain.class));
                     finish();
                     progressDialog.dismiss();
@@ -165,8 +165,6 @@ public class ActLogin extends AppCompatActivity implements
                     progressDialog.show();
                     controller.getFirebaseAuth().signInWithEmailAndPassword(strUserEmail,strUserPass).addOnCompleteListener(this);
                 }
-                DateTimeController controller1 = new DateTimeController(ActLogin.this);
-                controller1.getTimeTableDate(DateTimeConstants.MONDAY);
                 break;
             case R.id.btnGoToSignUp:
                 startActivity(new Intent(ActLogin.this, ActSignUp.class));

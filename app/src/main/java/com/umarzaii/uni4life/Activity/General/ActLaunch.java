@@ -105,7 +105,7 @@ public class ActLaunch extends AppCompatActivity {
                 if (dataSnapshot.hasChild(DBConstants.lecturerID)) {
                     String lecturerID = dataSnapshot.child(DBConstants.lecturerID).getValue().toString();
                     getLecturerStatus(lecturerID);
-                } else if (dataSnapshot.equals(DBConstants.studentID)) {
+                } else if (dataSnapshot.hasChild(DBConstants.studentID)) {
                     startActivity(new Intent(ActLaunch.this, StuActMain.class));
                     finish();
                 }
