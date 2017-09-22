@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txtRandomID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RandomID1"
+        android:layout_marginTop="45dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/txtTTDayID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TimeFrame Day"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/txtRandomID"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/txtTTHourID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TimeFrame Hour"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/txtTTDayID"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/lblSubjectID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Subject ID"
+        android:layout_marginBottom="16dp"
+        android:layout_above="@+id/lblRandomID2"
+        android:layout_toLeftOf="@+id/txtTTHourID"
+        android:layout_toStartOf="@+id/txtTTHourID"
+        android:layout_marginRight="17dp"
+        android:layout_marginEnd="17dp" />
+
+    <Spinner
+        android:id="@+id/spnSubjectID"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="51dp"
+        android:layout_marginEnd="51dp"
+        android:layout_alignBottom="@+id/lblSubjectID"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/lblRandomID2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RANDOM ID"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/lblSubjectID"
+        android:layout_alignStart="@+id/lblSubjectID" />
+
+
+    <Spinner
+        android:id="@+id/spnRandomID2"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/lblRandomID2"
+        android:layout_alignLeft="@+id/spnSubjectID"
+        android:layout_alignStart="@+id/spnSubjectID" />
+
+    <TextView
+        android:id="@+id/lblRandomID3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RANDOM ID"
+        android:layout_alignTop="@+id/spnRandomID3"
+        android:layout_alignLeft="@+id/lblRandomID2"
+        android:layout_alignStart="@+id/lblRandomID2" />
+
+    <Spinner
+        android:id="@+id/spnRandomID3"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/spnRandomID2"
+        android:layout_alignLeft="@+id/spnRandomID2"
+        android:layout_alignStart="@+id/spnRandomID2" />
+
+    <Button
+        android:id="@+id/btnTTSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SAVE"
+        android:layout_below="@+id/spnRandomID3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp" />
+
+</RelativeLayout>

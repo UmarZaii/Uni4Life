@@ -5,13 +5,29 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/btnLectTimeTable"
+        android:id="@+id/btnGoToCLList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CLASS LOCATION"
+        android:layout_above="@+id/btnGoToUCList"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btnGoToUCList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="STUDENT CLASS"
+        android:layout_above="@+id/btnMyTimeTable"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btnMyTimeTable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="MY TIMETABLE"
+        android:layout_marginBottom="72dp"
         android:layout_above="@+id/btnLogOut"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="175dp" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/btnLogOut"

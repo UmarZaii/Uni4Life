@@ -49,6 +49,11 @@ public class StuFrgMain extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch(v.getId()){
+            case R.id.btnStudTimeTable:
+//                Bundle lectBundle = new Bundle();
+//                lectBundle.putString("facultyID", facultyID);
+//                fragmentController.stackFragment(new DptAdmFrgLectList(), R.id.dptAdContentMain, lectBundle, "LectList");
+                break;
             case R.id.btnLogOut:
                 firebaseController.getFirebaseAuth().signOut();
                 getActivity().finish();
