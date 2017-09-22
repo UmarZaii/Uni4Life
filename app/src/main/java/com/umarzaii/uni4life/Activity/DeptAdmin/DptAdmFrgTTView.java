@@ -202,6 +202,8 @@ public class DptAdmFrgTTView extends Fragment implements View.OnClickListener {
         final Map<String, Object> dataMapCL = new HashMap<String, Object>();
         dataMapCL.put(timeID, ttMapper.classLocationToMap());
         tblTimeFrame.getLCDay(classLocationID,dayID).updateChildren(dataMapCL);
+
+        frgController.popBackStack("TTView");
     }
 
     private void goToTTEdit() {
@@ -213,6 +215,6 @@ public class DptAdmFrgTTView extends Fragment implements View.OnClickListener {
         bundle.putString("lecturerID", lecturerID);
         bundle.putString("userClassID", userClassID);
         bundle.putString("classLocationID", classLocationID);
-        frgController.stackFragment(new DptAdmFrgTTView(), R.id.dptAdContentMain, bundle, "TimeFrameDetails");
+        frgController.stackFragment(new DptAdmFrgTTEdit(), R.id.dptAdContentMain, bundle, "TTEdit");
     }
 }

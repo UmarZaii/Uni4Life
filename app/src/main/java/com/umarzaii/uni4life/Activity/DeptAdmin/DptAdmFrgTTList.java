@@ -35,15 +35,13 @@ public class DptAdmFrgTTList extends Fragment {
     private TblTimeFrame tblTimeFrame;
     private Query query;
 
-    private FirebaseController controller;
     private FragmentController frgController;
     private RecyclerViewController rvController;
-    private DropdownController dpController;
 
     private RecyclerView rvTTList;
     private TextView txtTTTitle;
 
-    private String facultyID;
+    private String lecturerID;
 
     @Nullable
     @Override
@@ -60,15 +58,13 @@ public class DptAdmFrgTTList extends Fragment {
 
         tblTimeFrame = new TblTimeFrame();
 
-        controller = new FirebaseController();
         frgController = new FragmentController(getActivity().getSupportFragmentManager());
         rvController = new RecyclerViewController(getActivity());
-        dpController = new DropdownController(getActivity());
 
         txtTTTitle = (TextView) v.findViewById(R.id.txtTTTitle);
         rvTTList = (RecyclerView)v.findViewById(R.id.rvTTList);
 
-        facultyID = getArguments().getString("facultyID");
+        lecturerID = getArguments().getString("lecturerID");
 
         rvController.init(rvTTList);
         txtTTTitle.setText(getArguments().getString("title"));
@@ -164,7 +160,7 @@ public class DptAdmFrgTTList extends Fragment {
 
     public void onLoad() {
         if (getArguments().getString("status") == "MyTimeTable") {
-            query = tblTimeFrame.getTblLecturer(controller.getUserID());
+            query = tblTimeFrame.getTblLecturer(lecturerID);
         } else if(getArguments().getString("status") == DBConstants.classLocation) {
             query = tblTimeFrame.getTblClassLocation(getArguments().getString("classLocationID"));
         } else if(getArguments().getString("status") == DBConstants.userClass) {
@@ -178,7 +174,7 @@ public class DptAdmFrgTTList extends Fragment {
         final String dayID = model.getDayID();
         viewHolder.setDay(dayID.substring(1,4).toUpperCase());
         if (getArguments().getString("status") == "MyTimeTable") {
-            getLectTimeTable(viewHolder,controller.getUserID(),dayID);
+            getLectTimeTable(viewHolder,lecturerID,dayID);
         } else if(getArguments().getString("status") == DBConstants.classLocation) {
             getCLTimeTable(viewHolder,getArguments().getString("classLocationID"),dayID);
         } else if(getArguments().getString("status") == DBConstants.userClass) {
@@ -313,7 +309,7 @@ public class DptAdmFrgTTList extends Fragment {
             bundle.putString("timeID", timeID);
             bundle.putString("lecturerID", lecturerID);
             bundle.putString("status", DBConstants.lecturer);
-            frgController.stackFragment(new DptAdmFrgTTView(), R.id.dptAdContentMain, bundle, "TimeFrameDetails");
+            frgController.stackFragment(new DptAdmFrgTTView(), R.id.dptAdContentMain, bundle, "TTView");
 
         } else if(getArguments().getString("status") == DBConstants.classLocation) {
 
@@ -323,7 +319,7 @@ public class DptAdmFrgTTList extends Fragment {
             bundle.putString("timeID", timeID);
             bundle.putString("classLocationID", classLocationID);
             bundle.putString("status", DBConstants.classLocation);
-            frgController.stackFragment(new DptAdmFrgTTView(), R.id.dptAdContentMain, bundle, "TimeFrameDetails");
+            frgController.stackFragment(new DptAdmFrgTTView(), R.id.dptAdContentMain, bundle, "TTView");
 
         } else if(getArguments().getString("status") == DBConstants.userClass) {
 
@@ -333,7 +329,7 @@ public class DptAdmFrgTTList extends Fragment {
             bundle.putString("timeID", timeID);
             bundle.putString("userClassID", userClassID);
             bundle.putString("status", DBConstants.userClass);
-            frgController.stackFragment(new DptAdmFrgTTView(), R.id.dptAdContentMain, bundle, "TimeFrameDetails");
+            frgController.stackFragment(new DptAdmFrgTTView(), R.id.dptAdContentMain, bundle, "TTView");
 
         }
     }

@@ -74,9 +74,7 @@ public class DptAdmFrgUCList extends Fragment implements View.OnClickListener {
             protected void populateViewHolder(UserClassViewHolder viewHolder, UserClassModel model, int position) {
 
                 final String userClassID = model.getUserClassID();
-                final String userClassName = model.getUserClassName();
                 viewHolder.setUserClassID(userClassID);
-                viewHolder.setUserClassName(userClassName);
 
                 viewHolder.fView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -99,7 +97,7 @@ public class DptAdmFrgUCList extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.btnGoToAddUC:
-                frgController.stackFragment(new DptAdmFrgUCAdd(), R.id.dptAdContentMain, "Add UserClass");
+                frgController.stackFragment(new DptAdmFrgUCAdd(), R.id.dptAdContentMain, "Add UC");
                 break;
             default:
                 Toast.makeText(getActivity(), "This feature is in development", Toast.LENGTH_SHORT).show();
@@ -118,11 +116,6 @@ public class DptAdmFrgUCList extends Fragment implements View.OnClickListener {
         public void setUserClassID(String userClassID) {
             TextView txtUserClassID = (TextView)fView.findViewById(R.id.txtUserClassID);
             txtUserClassID.setText(userClassID);
-        }
-
-        public void setUserClassName(String userClassName) {
-            TextView txtUserClassName = (TextView)fView.findViewById(R.id.txtUserClassName);
-            txtUserClassName.setText(userClassName);
         }
     }
 

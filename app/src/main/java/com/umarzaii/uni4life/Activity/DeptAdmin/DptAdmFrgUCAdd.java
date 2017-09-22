@@ -106,6 +106,7 @@ public class DptAdmFrgUCAdd extends Fragment implements
         switch(view.getId()){
             case R.id.spnSemesterID:
                 semesterID = parent.getItemAtPosition(position).toString();
+                Toast.makeText(getActivity(), "hi", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;
@@ -170,6 +171,9 @@ public class DptAdmFrgUCAdd extends Fragment implements
         if (TextUtils.isEmpty(userClassID)) {
             Toast.makeText(getActivity(), "Please input user class ID", Toast.LENGTH_SHORT).show();
             return false;
+        } else if (TextUtils.isEmpty(semesterID)) {
+            Toast.makeText(getActivity(), "Please choose semester", Toast.LENGTH_SHORT).show();
+            return false;
         } else {
             return true;
         }
@@ -193,6 +197,6 @@ public class DptAdmFrgUCAdd extends Fragment implements
         dataMapTt.put(userClassID, ttMapper.timeTableInit(DBConstants.tblUserClass));
         tblTimeFrame.getTblUserClass().updateChildren(dataMapTt);
 
-        fragmentController.popBackStack("ScanLect");
+        fragmentController.popBackStack("Add UC");
     }
 }

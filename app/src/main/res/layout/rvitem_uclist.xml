@@ -12,12 +12,4 @@
         android:id="@+id/txtUserClassID"
         android:hint="UserClassID"/>
 
-    <TextView
-        android:layout_height="35dp"
-        android:layout_marginLeft="10dp"
-        android:layout_width="match_parent"
-        android:textSize="20dp"
-        android:id="@+id/txtUserClassName"
-        android:hint="UserClassName"/>
-
 </LinearLayout>
