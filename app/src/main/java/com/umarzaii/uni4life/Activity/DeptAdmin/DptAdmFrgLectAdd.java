@@ -199,7 +199,7 @@ public class DptAdmFrgLectAdd extends Fragment implements View.OnClickListener {
         lecturerModel.setFacultyID(facultyID);
         lecturerModel.setDeptID(departmentID);
         lecturerModel.setLecturerID(lecturerID);
-        lecturerModel.setLecturerID(lecturerName);
+        lecturerModel.setLecturerName(lecturerName);
         lecturerModel.setDeptAdmin(false);
         lecturerModel.setDeptHead(false);
         LecturerMapper lecturerMapper = new LecturerMapper(lecturerModel);
