@@ -34,7 +34,6 @@ public class StuFrgTTView extends Fragment  {
     private TextView txtSubjectID, txtRandomID2, txtRandomID3;
     private TextView txtRandomID, txtTTDayID, txtTTHourID;
 
-
     private String status;
     private String dayID, timeID, subjectID;
     private String lecturerID, userClassID, classLocationID;
