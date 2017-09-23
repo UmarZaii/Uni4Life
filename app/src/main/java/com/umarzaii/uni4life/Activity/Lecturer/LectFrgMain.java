@@ -74,18 +74,19 @@ public class LectFrgMain extends Fragment implements View.OnClickListener {
             case R.id.btnGoToCLList:
                 Bundle clBundle = new Bundle();
                 clBundle.putString("facultyID", facultyID);
-                fragmentController.stackFragment(new LectFrgCLList(), R.id.lectContentMain, clBundle, "LectList");
+                fragmentController.stackFragment(new LectFrgCLList(), R.id.lectContentMain, clBundle, "CLList");
                 break;
             case R.id.btnGoToUCList:
                 Bundle ucBundle = new Bundle();
                 ucBundle.putString("facultyID", facultyID);
                 ucBundle.putString("lecturerID", lecturerID);
-//                fragmentController.stackFragment(new LectFrgTTList(), R.id.lectContentMain, ucBundle, "LectList");
+                fragmentController.stackFragment(new LectFrgUCList(), R.id.lectContentMain, ucBundle, "UCList");
                 break;
             case R.id.btnMyTimeTable:
                 Bundle ttBundle = new Bundle();
-                ttBundle.putString("facultyID", facultyID);
                 ttBundle.putString("lecturerID", lecturerID);
+                ttBundle.putString("title", "My TimeTable");
+                ttBundle.putString("status", "MyTimeTable");
                 fragmentController.stackFragment(new LectFrgTTList(), R.id.lectContentMain, ttBundle, "LectList");
                 break;
             case R.id.btnLogOut:
