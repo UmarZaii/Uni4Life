@@ -173,12 +173,12 @@ public class DptAdmFrgTTEdit extends Fragment implements View.OnClickListener, A
         initSpinner(spnRandomID3,"random3");
     }
 
-    private void initSpinner(final Spinner spinnerID, String boolType) {
-        if (!boolSubject && boolType == "subject") {
+    private void initSpinner(final Spinner spinnerID, String spinnerType) {
+        if (!boolSubject && spinnerType == "subject") {
             Query query = tblSubject.getTable();
             getSpinnerList(spinnerID,query);
             boolSubject = true;
-        } else if (!boolRandom2 && boolType == "random2") {
+        } else if (!boolRandom2 && spinnerType == "random2") {
             if(status == DBConstants.lecturer) {
                 Query query = tblUserClass.getTable();
                 getSpinnerList(spinnerID,query);
@@ -192,7 +192,7 @@ public class DptAdmFrgTTEdit extends Fragment implements View.OnClickListener, A
                 getSpinnerList(spinnerID,query);
                 boolRandom2 = true;
             }
-        } else if (!boolRandom3 && boolType == "random3") {
+        } else if (!boolRandom3 && spinnerType == "random3") {
             if(status == DBConstants.lecturer) {
                 Query query = tblClassLocation.getTable();
                 getSpinnerList(spinnerID,query);

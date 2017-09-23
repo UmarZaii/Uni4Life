@@ -14,7 +14,7 @@ public class LectActMain extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.stud_act_main);
+        setContentView(R.layout.lect_act_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.lecturer_toolbar);
         setSupportActionBar(toolbar);
