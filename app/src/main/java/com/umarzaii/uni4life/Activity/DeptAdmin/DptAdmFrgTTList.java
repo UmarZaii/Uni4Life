@@ -1,5 +1,6 @@
 package com.umarzaii.uni4life.Activity.DeptAdmin;
 
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -108,7 +109,12 @@ public class DptAdmFrgTTList extends Fragment {
         }
 
         public void setDay(String day) {
+            GradientDrawable gd = new GradientDrawable();
+            gd.setColor(0xFF00FF00); // Changes this drawbale to use a single color instead of a gradient
+            gd.setCornerRadius(5);
+            gd.setStroke(1, 0xFF000000);
             TextView txtDay = (TextView)fView.findViewById(R.id.txtDay);
+            txtDay.setBackgroundDrawable(gd);
             txtDay.setText(day);
         }
 

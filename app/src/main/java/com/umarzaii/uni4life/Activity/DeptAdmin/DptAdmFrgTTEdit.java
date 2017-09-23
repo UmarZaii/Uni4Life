@@ -87,7 +87,7 @@ public class DptAdmFrgTTEdit extends Fragment implements View.OnClickListener, A
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        switch(view.getId()){
+        switch(parent.getId()){
             case R.id.spnSubjectID:
                 subjectID = parent.getItemAtPosition(position).toString();
                 break;
@@ -244,17 +244,9 @@ public class DptAdmFrgTTEdit extends Fragment implements View.OnClickListener, A
         ttModel.setClassLocationID(classLocationID);
         TimeTableMapper ttMapper = new TimeTableMapper(getActivity(),ttModel);
 
-        final Map<String, Object> dataMapLC = new HashMap<String, Object>();
-        dataMapLC.put(timeID, ttMapper.lecturerToMap());
-        tblTimeFrame.getLCDay(lecturerID,dayID).updateChildren(dataMapLC);
-
-        final Map<String, Object> dataMapUC = new HashMap<String, Object>();
-        dataMapUC.put(timeID, ttMapper.userClassToMap());
-        tblTimeFrame.getUCDay(userClassID,dayID).updateChildren(dataMapUC);
-
-        final Map<String, Object> dataMapCL = new HashMap<String, Object>();
-        dataMapCL.put(timeID, ttMapper.classLocationToMap());
-        tblTimeFrame.getLCDay(classLocationID,dayID).updateChildren(dataMapCL);
+        tblTimeFrame.getLCTime(lecturerID,dayID,timeID).updateChildren(ttMapper.lecturerToMap());
+        tblTimeFrame.getUCTime(userClassID,dayID,timeID).updateChildren(ttMapper.userClassToMap());
+        tblTimeFrame.getCLTime(classLocationID,dayID,timeID).updateChildren(ttMapper.classLocationToMap());
 
         frgController.popBackStack("TTEdit");
     }
