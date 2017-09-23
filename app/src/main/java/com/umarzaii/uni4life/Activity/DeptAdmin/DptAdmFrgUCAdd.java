@@ -76,7 +76,7 @@ public class DptAdmFrgUCAdd extends Fragment implements
         tblLecturer = new TblLecturer();
         tblUser = new TblUser();
 
-        spnSemesterID = (Spinner)v.findViewById(R.id.spnUCAddSemesterID);
+        spnSemesterID = (Spinner)v.findViewById(R.id.spnSemesterID);
         edtUCID = (EditText)v.findViewById(R.id.edtUCID);
         btnAddUC = (Button)v.findViewById(R.id.btnAddUC);
 
@@ -103,7 +103,14 @@ public class DptAdmFrgUCAdd extends Fragment implements
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        semesterID = parent.getItemAtPosition(position).toString();
+        switch(parent.getId()){
+            case R.id.spnSemesterID:
+                semesterID = parent.getItemAtPosition(position).toString();
+                break;
+            default:
+                Toast.makeText(getActivity(), "This feature is in development", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 
     @Override
