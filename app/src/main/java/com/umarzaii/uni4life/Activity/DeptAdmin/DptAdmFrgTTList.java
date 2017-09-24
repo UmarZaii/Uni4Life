@@ -28,6 +28,7 @@ import com.umarzaii.uni4life.Database.TblUserClass;
 import com.umarzaii.uni4life.Model.TimeTableModel;
 import com.umarzaii.uni4life.Model.UserClassModel;
 import com.umarzaii.uni4life.R;
+import com.umarzaii.uni4life.UIDesign.MyTextView;
 
 import java.util.ArrayList;
 
@@ -109,12 +110,7 @@ public class DptAdmFrgTTList extends Fragment {
         }
 
         public void setDay(String day) {
-            GradientDrawable gd = new GradientDrawable();
-            gd.setColor(0xFF00FF00); // Changes this drawbale to use a single color instead of a gradient
-            gd.setCornerRadius(5);
-            gd.setStroke(1, 0xFF000000);
-            TextView txtDay = (TextView)fView.findViewById(R.id.txtDay);
-            txtDay.setBackgroundDrawable(gd);
+            MyTextView txtDay = (MyTextView)fView.findViewById(R.id.txtDay);
             txtDay.setText(day);
         }
 
