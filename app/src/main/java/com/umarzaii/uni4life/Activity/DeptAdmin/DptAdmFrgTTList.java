@@ -1,6 +1,5 @@
 package com.umarzaii.uni4life.Activity.DeptAdmin;
 
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,29 +7,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.umarzaii.uni4life.Controller.DropdownController;
-import com.umarzaii.uni4life.Controller.FirebaseController;
 import com.umarzaii.uni4life.Controller.FragmentController;
 import com.umarzaii.uni4life.Controller.RecyclerViewController;
 import com.umarzaii.uni4life.Database.DBConstants;
 import com.umarzaii.uni4life.Database.TblTimeFrame;
-import com.umarzaii.uni4life.Database.TblUserClass;
 import com.umarzaii.uni4life.Model.TimeTableModel;
-import com.umarzaii.uni4life.Model.UserClassModel;
 import com.umarzaii.uni4life.R;
 import com.umarzaii.uni4life.UIDesign.MyTextView;
-
-import java.util.ArrayList;
 
 public class DptAdmFrgTTList extends Fragment {
 
