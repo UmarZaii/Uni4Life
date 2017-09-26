@@ -2,50 +2,67 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/unnamed">
+
 
     <Button
+        android:background="@drawable/icon1"
         android:id="@+id/btnDeptGoToCLList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:text="CLASS LOCATION"
-        android:layout_above="@+id/btnDeptGoToUCList"
-        android:layout_alignLeft="@+id/btnDeptGoToUCList"
-        android:layout_alignStart="@+id/btnDeptGoToUCList" />
+        android:textSize="30dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
+        android:background="@drawable/student"
         android:id="@+id/btnDeptGoToUCList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:text="STUDENT CLASS"
-        android:layout_above="@+id/btnDeptGoToLectList"
-        android:layout_centerHorizontal="true" />
+        android:textSize="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_toRightOf="@+id/btnDeptGoToCLList"
+        android:layout_alignBottom="@+id/btnDeptGoToCLList" />
 
     <Button
+        android:background="@drawable/lecturer"
         android:id="@+id/btnDeptGoToLectList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:text="LECTURER LIST"
-        android:layout_above="@+id/btnMyTimeTable"
-        android:layout_alignLeft="@+id/btnMyTimeTable"
-        android:layout_alignStart="@+id/btnMyTimeTable" />
+        android:textSize="30dp"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/btnDeptGoToCLList"
+        android:layout_alignStart="@+id/btnDeptGoToCLList" />
 
     <Button
+        android:background="@drawable/images"
         android:id="@+id/btnMyTimeTable"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:text="MY TIMETABLE"
-        android:layout_marginBottom="72dp"
-        android:layout_above="@+id/btnLogOut"
-        android:layout_centerHorizontal="true" />
+        android:textSize="30dp"
+        android:layout_alignLeft="@+id/btnDeptGoToUCList"
+        android:layout_alignStart="@+id/btnDeptGoToUCList"
+        android:layout_alignTop="@+id/btnDeptGoToLectList" />
 
     <Button
         android:id="@+id/btnLogOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LOG OUT"
-        android:layout_marginBottom="61dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="61dp"
+        android:background="?android:attr/colorFocusedHighlight"
+        android:text="LOG OUT"
+        android:textSize="30dp" />
 
 </RelativeLayout>

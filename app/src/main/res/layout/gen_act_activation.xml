@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/email123">
 
     <include
         layout="@layout/gen_toolbar_main"
@@ -12,6 +13,7 @@
     <TextView
         android:text="We have sent you verification email for your account to the email below:"
         android:gravity="center"
+        android:textSize="20dp"
         android:layout_width="500px"
         android:layout_height="wrap_content"
         android:layout_marginTop="105dp"
@@ -21,6 +23,7 @@
 
     <TextView
         android:hint="E-mail"
+        android:textSize="25dp"
         android:gravity="center"
         android:layout_width="500px"
         android:layout_height="wrap_content"
@@ -32,6 +35,7 @@
 
     <TextView
         android:text="Please verify your email and click continue to proceed"
+        android:textSize="25dp"
         android:gravity="center"
         android:layout_width="500px"
         android:layout_height="wrap_content"
@@ -45,18 +49,22 @@
         android:id="@+id/btnResendEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RESEND EMAIL"
-        android:layout_marginTop="62dp"
         android:layout_below="@+id/txtActivationContent2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="62dp"
+        android:background="?android:attr/colorActivatedHighlight"
+        android:text="RESEND EMAIL"
+        android:textSize="25dp" />
 
     <Button
         android:id="@+id/btnContinue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CONTINUE"
-        android:layout_marginTop="15dp"
         android:layout_below="@+id/btnResendEmail"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="?android:attr/colorActivatedHighlight"
+        android:text="CONTINUE"
+        android:textSize="25dp" />
 
 </RelativeLayout>

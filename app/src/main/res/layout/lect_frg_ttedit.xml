@@ -3,13 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/cale123">
 
     <TextView
         android:id="@+id/txtRandomID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RandomID1"
+        android:textSize="25dp"
         android:layout_marginTop="45dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -19,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TimeFrame Day"
+        android:textSize="25dp"
         android:layout_marginTop="16dp"
         android:layout_below="@+id/txtRandomID"
         android:layout_centerHorizontal="true" />
@@ -28,6 +31,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TimeFrame Hour"
+        android:drawableStart="@drawable/ic_alarm_add_black_24dp"
+        android:textSize="25dp"
         android:layout_marginTop="17dp"
         android:layout_below="@+id/txtTTDayID"
         android:layout_centerHorizontal="true" />
@@ -37,6 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Subject ID"
+        android:textSize="20dp"
         android:layout_marginBottom="16dp"
         android:layout_above="@+id/lblRandomID2"
         android:layout_toLeftOf="@+id/txtTTHourID"
@@ -59,6 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RANDOM ID"
+        android:textSize="20dp"
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/lblSubjectID"
         android:layout_alignStart="@+id/lblSubjectID" />
@@ -77,6 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RANDOM ID"
+        android:textSize="20dp"
         android:layout_alignTop="@+id/spnRandomID3"
         android:layout_alignLeft="@+id/lblRandomID2"
         android:layout_alignStart="@+id/lblRandomID2" />
@@ -94,9 +102,11 @@
         android:id="@+id/btnTTSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SAVE"
         android:layout_below="@+id/spnRandomID3"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
+        android:layout_marginTop="40dp"
+        android:background="?android:attr/colorActivatedHighlight"
+        android:text="SAVE"
+        android:textSize="20dp" />
 
 </RelativeLayout>

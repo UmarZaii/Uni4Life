@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/board123">
 
     <include
         layout="@layout/gen_toolbar_main"
@@ -15,6 +16,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="E-mail"
+        android:drawableStart="@drawable/ic_person_black_24dp"
+        android:textSize="25dp"
         android:layout_marginTop="100dp"
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/edtUserNameReg"
@@ -26,6 +29,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Password"
+        android:drawableStart="@drawable/ic_https_black_24dp"
+        android:textSize="25dp"
         android:inputType="textPassword"
         android:layout_below="@+id/edtUserEmailReg"
         android:layout_alignLeft="@+id/edtUserEmailReg"
@@ -37,6 +42,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Full Name"
+        android:drawableStart="@drawable/ic_face_black_24dp"
+        android:textSize="25dp"
         android:layout_below="@+id/edtUserPassReg"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="43dp" />
@@ -45,9 +52,15 @@
         android:id="@+id/btnSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:backgroundTint="@drawable/common_google_signin_btn_icon_dark_focused"
         android:text="SIGN UP"
+        android:textSize="30dp"
+        android:layout_marginRight="87dp"
+        android:layout_marginEnd="87dp"
+        android:layout_marginBottom="108dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="87dp" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

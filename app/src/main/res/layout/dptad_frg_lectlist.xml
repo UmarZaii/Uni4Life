@@ -2,23 +2,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/pika234">
 
     <Button
         android:id="@+id/btnGoToAddLect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ADD LECT"
         android:layout_marginTop="55dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginStart="32dp"
+        android:background="?android:attr/colorActivatedHighlight"
+        android:text="ADD LECT"
+        android:textSize="30dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/pika234"
         android:paddingBottom="16dp"
         android:paddingTop="16dp"
         android:paddingLeft="16dp"

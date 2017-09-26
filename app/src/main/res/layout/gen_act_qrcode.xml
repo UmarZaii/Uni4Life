@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
         android:hint="userID"
+        android:textSize="30dp"
         android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true" />
 

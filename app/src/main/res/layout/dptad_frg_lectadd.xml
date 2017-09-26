@@ -1,31 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/scan123">
 
     <Button
         android:id="@+id/btnScanLect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SCAN QRCODE"
-        android:layout_marginTop="79dp"
+        android:textSize="20dp"
+        android:layout_marginTop="51dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginStart="36dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/txtUserID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="userID"
+        android:textSize="30dp"
+        android:layout_marginTop="50dp"
         android:layout_below="@+id/btnScanLect"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="54dp" />
+        android:layout_toLeftOf="@+id/btnAddLect"
+        android:layout_toStartOf="@+id/btnAddLect"
+        android:layout_marginRight="17dp"
+        android:layout_marginEnd="17dp" />
 
     <EditText
         android:id="@+id/edtLecturerID"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="lecturer ID"
+        android:drawableStart="@drawable/ic_account_circle_black_24dp"
+        android:textSize="30dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
@@ -34,6 +45,8 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="lecturer Name"
+        android:textSize="30dp"
+        android:drawableStart="@drawable/ic_contacts_black_24dp"
         android:layout_below="@+id/edtLecturerID"
         android:layout_alignLeft="@+id/edtLecturerID"
         android:layout_alignStart="@+id/edtLecturerID" />
@@ -42,9 +55,11 @@
         android:id="@+id/btnAddLect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
-        android:text="ADD LECT"
         android:layout_below="@+id/edtLecturerName"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="23dp"
+        android:background="?android:attr/colorActivatedHighlight"
+        android:text="ADD LECT"
+        android:textSize="25dp" />
 
 </RelativeLayout>

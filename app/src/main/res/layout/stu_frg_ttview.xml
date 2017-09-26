@@ -3,13 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/cale123">
 
     <TextView
         android:id="@+id/txtRandomID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RandomID1"
+        android:textSize="25dp"
         android:layout_marginTop="45dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -19,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TimeFrame Day"
+        android:textSize="25dp"
         android:layout_marginTop="16dp"
         android:layout_below="@+id/txtRandomID"
         android:layout_centerHorizontal="true" />
@@ -28,6 +31,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TimeFrame Hour"
+        android:drawableStart="@drawable/ic_alarm_add_black_24dp"
+        android:textSize="25dp"
         android:layout_marginTop="17dp"
         android:layout_below="@+id/txtTTDayID"
         android:layout_centerHorizontal="true" />
@@ -37,6 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Subject ID"
+        android:textSize="25dp"
         android:layout_marginBottom="12dp"
         android:layout_above="@+id/lblRandomID2"
         android:layout_toLeftOf="@+id/txtRandomID"
@@ -47,6 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="SubjectID"
+        android:textSize="25dp"
         android:layout_alignBaseline="@+id/lblSubjectID"
         android:layout_alignBottom="@+id/lblSubjectID"
         android:layout_toRightOf="@+id/txtRandomID"
@@ -57,6 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RANDOM ID"
+        android:textSize="25dp"
         android:layout_alignBaseline="@+id/txtRandomID2"
         android:layout_alignBottom="@+id/txtRandomID2"
         android:layout_alignLeft="@+id/lblSubjectID"
@@ -68,6 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Empty"
+        android:textSize="25dp"
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/txtSubjectID"
         android:layout_alignStart="@+id/txtSubjectID" />
@@ -77,6 +86,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RANDOM ID"
+        android:textSize="25dp"
         android:layout_alignBaseline="@+id/txtRandomID3"
         android:layout_alignBottom="@+id/txtRandomID3"
         android:layout_alignLeft="@+id/lblSubjectID"
@@ -87,6 +97,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Empty"
+        android:textSize="25dp"
         android:layout_marginTop="14dp"
         android:layout_below="@+id/txtRandomID2"
         android:layout_alignLeft="@+id/txtRandomID2"

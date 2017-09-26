@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/pika123">
 
     <EditText
         android:id="@+id/edtCLID"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="Class Location ID"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:textSize="30dp"
+        android:textColor="#ff1f17"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="222dp" />
 
     <EditText
         android:id="@+id/edtCLName"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="Class Location Name"
+        android:textSize="30dp"
         android:layout_below="@+id/edtCLID"
         android:layout_alignLeft="@+id/edtCLID"
         android:layout_alignStart="@+id/edtCLID" />
@@ -24,8 +29,10 @@
         android:id="@+id/btnAddCL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="25dp"
+        android:background="?android:attr/colorMultiSelectHighlight"
         android:text="ADD CLASS LOCATION"
+        android:textSize="30dp"
         android:layout_below="@+id/edtCLName"
         android:layout_centerHorizontal="true" />
 
