@@ -21,6 +21,7 @@ import com.umarzaii.uni4life.Database.DBConstants;
 import com.umarzaii.uni4life.Database.TblTimeFrame;
 import com.umarzaii.uni4life.Model.TimeTableModel;
 import com.umarzaii.uni4life.R;
+import com.umarzaii.uni4life.UIDesign.MyTextView;
 
 public class StuFrgTTList extends Fragment {
 
@@ -32,8 +33,6 @@ public class StuFrgTTList extends Fragment {
 
     private RecyclerView rvTTList;
     private TextView txtTTTitle;
-
-    private String lecturerID;
 
     @Nullable
     @Override
@@ -56,8 +55,6 @@ public class StuFrgTTList extends Fragment {
         txtTTTitle = (TextView) v.findViewById(R.id.txtTTTitle);
         rvTTList = (RecyclerView)v.findViewById(R.id.rvTTList);
 
-        lecturerID = getArguments().getString("lecturerID");
-
         rvController.init(rvTTList);
         txtTTTitle.setText(getArguments().getString("title"));
     }
@@ -65,13 +62,12 @@ public class StuFrgTTList extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        onLoad();
 
         FirebaseRecyclerAdapter<TimeTableModel,TimeTableViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<TimeTableModel, TimeTableViewHolder>(
                 TimeTableModel.class,
                 R.layout.rvitem_ttlist,
                 TimeTableViewHolder.class,
-                query
+                tblTimeFrame.getTblUserClass(getArguments().getString("userClassID"))
         ) {
             @Override
             protected void populateViewHolder(TimeTableViewHolder viewHolder, TimeTableModel model, int position) {
@@ -100,7 +96,7 @@ public class StuFrgTTList extends Fragment {
         }
 
         public void setDay(String day) {
-            TextView txtDay = (TextView)fView.findViewById(R.id.txtDay);
+            MyTextView txtDay = (MyTextView)fView.findViewById(R.id.txtDay);
             txtDay.setText(day);
         }
 
@@ -150,60 +146,10 @@ public class StuFrgTTList extends Fragment {
         }
     }
 
-    public void onLoad() {
-        if (getArguments().getString("status") == "MyTimeTable") {
-            query = tblTimeFrame.getTblLecturer(lecturerID);
-        } else if(getArguments().getString("status") == DBConstants.classLocation) {
-            query = tblTimeFrame.getTblClassLocation(getArguments().getString("classLocationID"));
-        } else if(getArguments().getString("status") == DBConstants.userClass) {
-            query = tblTimeFrame.getTblUserClass(getArguments().getString("userClassID"));
-        } else if(getArguments().getString("status") == DBConstants.lecturer) {
-            query = tblTimeFrame.getTblLecturer(getArguments().getString("lecturerID"));
-        }
-    }
-
     public void populate(TimeTableViewHolder viewHolder, TimeTableModel model) {
         final String dayID = model.getDayID();
         viewHolder.setDay(dayID.substring(1,4).toUpperCase());
-        if (getArguments().getString("status") == "MyTimeTable") {
-            getLectTimeTable(viewHolder,lecturerID,dayID);
-        } else if(getArguments().getString("status") == DBConstants.classLocation) {
-            getCLTimeTable(viewHolder,getArguments().getString("classLocationID"),dayID);
-        } else if(getArguments().getString("status") == DBConstants.userClass) {
-            getUCTimeTable(viewHolder,getArguments().getString("userClassID"),dayID);
-        } else if(getArguments().getString("status") == DBConstants.lecturer) {
-            getLectTimeTable(viewHolder,getArguments().getString("lecturerID"),dayID);
-        }
-    }
-
-    public void getLectTimeTable(final TimeTableViewHolder viewHolder, String userID, final String dayID) {
-        tblTimeFrame.getLCDay(userID,dayID).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                setViewHolder(viewHolder,dataSnapshot);
-                onClick(viewHolder,dayID);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    public void getCLTimeTable(final TimeTableViewHolder viewHolder, String classLocationID, final String dayID) {
-        tblTimeFrame.getCLDay(classLocationID,dayID).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                setViewHolder(viewHolder,dataSnapshot);
-                onClick(viewHolder,dayID);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        getUCTimeTable(viewHolder,getArguments().getString("userClassID"),dayID);
     }
 
     public void getUCTimeTable(final TimeTableViewHolder viewHolder, String userClassID, final String dayID) {
@@ -291,39 +237,13 @@ public class StuFrgTTList extends Fragment {
     }
 
     public void onClickEvent(String dayID, String timeID) {
-
-        if(getArguments().getString("status") == DBConstants.lecturer ||
-                getArguments().getString("status") == "MyTimeTable") {
-
-            String lecturerID = getArguments().getString("lecturerID");
-            Bundle bundle = new Bundle();
-            bundle.putString("dayID", dayID);
-            bundle.putString("timeID", timeID);
-            bundle.putString("lecturerID", lecturerID);
-            bundle.putString("status", DBConstants.lecturer);
-            frgController.stackFragment(new StuFrgTTView(), R.id.studContentMain, bundle, "TTView");
-
-        } else if(getArguments().getString("status") == DBConstants.classLocation) {
-
-            String classLocationID = getArguments().getString("classLocationID");
-            Bundle bundle = new Bundle();
-            bundle.putString("dayID", dayID);
-            bundle.putString("timeID", timeID);
-            bundle.putString("classLocationID", classLocationID);
-            bundle.putString("status", DBConstants.classLocation);
-           frgController.stackFragment(new StuFrgTTView(), R.id.studContentMain, bundle, "TTView");
-
-        } else if(getArguments().getString("status") == DBConstants.userClass) {
-
-            final String userClassID = getArguments().getString("userClassID");
-            Bundle bundle = new Bundle();
-            bundle.putString("dayID", dayID);
-            bundle.putString("timeID", timeID);
-            bundle.putString("userClassID", userClassID);
-            bundle.putString("status", DBConstants.userClass);
-          frgController.stackFragment(new StuFrgTTView(), R.id.studContentMain, bundle, "TTView");
-
-        }
+        final String userClassID = getArguments().getString("userClassID");
+        Bundle bundle = new Bundle();
+        bundle.putString("dayID", dayID);
+        bundle.putString("timeID", timeID);
+        bundle.putString("userClassID", userClassID);
+        bundle.putString("status", DBConstants.userClass);
+        frgController.stackFragment(new StuFrgTTView(), R.id.studContentMain, bundle, "TTView");
     }
 
 }
