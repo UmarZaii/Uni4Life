@@ -69,7 +69,7 @@ public class StuFrgMain extends Fragment implements View.OnClickListener {
                 Bundle ttBundle = new Bundle();
                 ttBundle.putString("userClassID", userClassID);
                 ttBundle.putString("title", "My TimeTable");
-                fragmentController.stackFragment(new StuFrgTTList(), R.id.dptAdContentMain, ttBundle, "TTList");
+                fragmentController.stackFragment(new StuFrgTTList(), R.id.studContentMain, ttBundle, "TTList");
                 break;
             case R.id.btnLogOut:
                 firebaseController.getFirebaseAuth().signOut();
