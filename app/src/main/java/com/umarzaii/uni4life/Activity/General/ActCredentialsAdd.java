@@ -55,6 +55,7 @@ public class ActCredentialsAdd extends AppCompatActivity implements
     private String deptID;
 
     private Boolean boolCourse = true;
+    private Boolean boolSemester = true;
     private Boolean boolUserClass = true;
 
     @Override
@@ -82,6 +83,8 @@ public class ActCredentialsAdd extends AppCompatActivity implements
         btnAddStudentCredentials.setOnClickListener(this);
 
         getCourseIDList();
+        getSemesterIDList();
+        getUserClassIDList();
     }
 
     @Override
@@ -101,10 +104,9 @@ public class ActCredentialsAdd extends AppCompatActivity implements
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        switch(view.getId()){
+        switch(parent.getId()){
             case R.id.spnCourseID:
                 courseIDSelection = parent.getItemAtPosition(position).toString();
-                getUserClassIDList(courseIDSelection);
                 getFacultyAndDeptID(courseIDSelection);
                 break;
             case R.id.spnSemesterID:
@@ -121,6 +123,21 @@ public class ActCredentialsAdd extends AppCompatActivity implements
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    private void getFacultyAndDeptID(String courseID) {
+        tblCourse.getTable(courseID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                facultyID = dataSnapshot.child(DBConstants.facultyID).getValue().toString();
+                deptID = dataSnapshot.child(DBConstants.deptID).getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void getCourseIDList() {
@@ -141,23 +158,16 @@ public class ActCredentialsAdd extends AppCompatActivity implements
         });
     }
 
-    private void getFacultyAndDeptID(String courseID) {
-        tblCourse.getTable(courseID).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                facultyID = dataSnapshot.child(DBConstants.facultyID).getValue().toString();
-                deptID = dataSnapshot.child(DBConstants.deptID).getValue().toString();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+    private void getSemesterIDList() {
+        if (boolSemester) {
+            ArrayAdapter adapter = dpController.getAdapter(dpController.semester());
+            spnSemesterID.setAdapter(adapter);
+            boolSemester = false;
+        }
     }
 
-    private void getUserClassIDList(String courseID) {
-        tblUserClass.getTable().orderByChild(DBConstants.courseID).equalTo(courseID).addValueEventListener(new ValueEventListener() {
+    private void getUserClassIDList() {
+        tblUserClass.getTable().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (boolUserClass) {

@@ -189,17 +189,9 @@ public class LectFrgTTView extends Fragment implements View.OnClickListener {
         ttModel.setClassLocationID("");
         TimeTableMapper ttMapper = new TimeTableMapper(getActivity(),ttModel);
 
-        final Map<String, Object> dataMapLC = new HashMap<String, Object>();
-        dataMapLC.put(timeID, ttMapper.lecturerToMap());
-        tblTimeFrame.getLCDay(lecturerID,dayID).updateChildren(dataMapLC);
-
-        final Map<String, Object> dataMapUC = new HashMap<String, Object>();
-        dataMapUC.put(timeID, ttMapper.userClassToMap());
-        tblTimeFrame.getUCDay(userClassID,dayID).updateChildren(dataMapUC);
-
-        final Map<String, Object> dataMapCL = new HashMap<String, Object>();
-        dataMapCL.put(timeID, ttMapper.classLocationToMap());
-        tblTimeFrame.getLCDay(classLocationID,dayID).updateChildren(dataMapCL);
+        tblTimeFrame.getLCTime(lecturerID,dayID,timeID).updateChildren(ttMapper.lecturerToMap());
+        tblTimeFrame.getUCTime(userClassID,dayID,timeID).updateChildren(ttMapper.userClassToMap());
+        tblTimeFrame.getCLTime(classLocationID,dayID,timeID).updateChildren(ttMapper.classLocationToMap());
 
         frgController.popBackStack("TTView");
     }

@@ -87,7 +87,7 @@ public class LectFrgTTEdit extends Fragment implements View.OnClickListener, Ada
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        switch(view.getId()){
+        switch(parent.getId()){
             case R.id.spnSubjectID:
                 subjectID = parent.getItemAtPosition(position).toString();
                 break;
