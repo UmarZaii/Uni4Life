@@ -5,4 +5,9 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="lightGreen">#00C851</color>
+
+    <color name="toastInfo">#3F51B5</color>
+    <color name="toastError">#F44336</color>
+    <color name="toastWarning">#FFC107</color>
+    <color name="toastSuccess">#009688</color>
 </resources>
